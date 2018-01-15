@@ -264,7 +264,10 @@ public final class RunParameters implements Cloneable {
 		 * covers all the symbolic states according to the
 		 * step show mode.  
 		 */
-		JUNIT_TEST
+		JUNIT_TEST,
+
+		/** Displays the states textually (with indentation) and keeps all the states. */
+		FULLTEXTHISTORY
 	}
 
 	/** The runner parameters. */

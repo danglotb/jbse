@@ -69,7 +69,7 @@ public class Util {
      * Cleanly interrupts the execution of an {@link Algorithm}.
      */
     public static void exitFromAlgorithm() throws InterruptException {
-        assert false;
+//        assert false;
         throw InterruptException.mk();
     }
 
