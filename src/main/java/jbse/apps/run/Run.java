@@ -6,7 +6,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import jbse.JBSE;
@@ -220,6 +222,12 @@ public final class Run {
         INC_OUT_OF_SCOPE
     }
 
+    private List<State> states = new ArrayList<>();
+
+    public List<State> getStates() {
+        return states;
+    }
+
     private class ActionsRun extends Runner.Actions {
         private String endOfTraceMessage;
         private TraceTypes traceKind;
@@ -425,6 +433,7 @@ public final class Run {
         public boolean atTraceEnd() {
             try {
                 final State currentState = Run.this.engine.getCurrentState();
+                states.add(currentState.clone());
                 //prints the leaf state if the case
                 if (Run.this.parameters.getStepShowMode() == StepShowMode.ALL ||    //already shown
                         Run.this.parameters.getStepShowMode() == StepShowMode.SOURCE || //already shown
